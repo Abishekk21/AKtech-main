@@ -27,12 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd AKtech-main
+          cd "D:\AK Tech\ak-tech-main\client"
           npm install
 
       - name: Build the application
         run: |
-          cd AKtech-main
+          cd "D:\AK Tech\ak-tech-main\client"
           CI=false npm run build
 
       - name: Build And Deploy
@@ -43,7 +43,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          app_location: "./AKtech-main" # App source code path
+          app_location: "./client" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory
           skip_app_build: false
