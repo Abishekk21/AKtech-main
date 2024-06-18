@@ -27,12 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd CLIENT
+          cd client
           npm install
 
       - name: Build the application
         run: |
-          cd CLIENT
+          cd client
           CI=false npm run build
 
       - name: Build And Deploy
