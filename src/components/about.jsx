@@ -4,16 +4,16 @@ export const About = (props) => {
   const aboutRef = useRef(null);
 
   useEffect(() => {
+    const currentAboutRef = aboutRef.current;
+
     const animateText = () => {
-      const aboutText = aboutRef.current;
-      aboutText.classList.add("animate");
+      currentAboutRef.classList.add("animate");
     };
 
     animateText();
 
     return () => {
-      const aboutText = aboutRef.current;
-      aboutText.classList.remove("animate");
+      currentAboutRef.classList.remove("animate");
     };
   }, []);
 
