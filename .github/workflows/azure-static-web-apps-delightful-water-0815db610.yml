@@ -27,12 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd "D:\\AK Tech\\ak-tech-main\\client"
+          cd \
           npm install
 
       - name: Build the application
         run: |
-          cd "D:\\AK Tech\\ak-tech-main\\client"
+          cd \
           CI=false npm run build
 
       - name: Build And Deploy
