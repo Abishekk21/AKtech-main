@@ -27,12 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd client
+          cd AKtech-main
           npm install
 
       - name: Build the application
         run: |
-          cd client
+          cd AKtech-main
           CI=false npm run build
 
       - name: Build And Deploy
