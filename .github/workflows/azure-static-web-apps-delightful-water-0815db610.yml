@@ -22,28 +22,35 @@ jobs:
 
       - name: Check if 'client' directory exists
         id: check_client_dir
-        run: test -d client
+        run: |
+          if [ -d "client" ]; then
+            echo "client directory exists"
+            echo "CLIENT_DIR_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "client directory does not exist"
+            echo "CLIENT_DIR_EXISTS=false" >> $GITHUB_ENV
+          fi
 
       - name: Set up Node.js 20
-        if: steps.check_client_dir.outcome == 'success'
+        if: env.CLIENT_DIR_EXISTS == 'true'
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
       - name: Install dependencies
-        if: steps.check_client_dir.outcome == 'success'
+        if: env.CLIENT_DIR_EXISTS == 'true'
         run: |
           cd client
           npm install
 
       - name: Build the application
-        if: steps.check_client_dir.outcome == 'success'
+        if: env.CLIENT_DIR_EXISTS == 'true'
         run: |
           cd client
           CI=false npm run build
 
       - name: Build And Deploy
-        if: steps.check_client_dir.outcome == 'success'
+        if: env.CLIENT_DIR_EXISTS == 'true'
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
