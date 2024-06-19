@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd client
+          cd /path/to/client
           npm install
 
       - name: Build the application
