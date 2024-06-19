@@ -27,7 +27,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd /path/to/client
+          echo "Current directory: $(pwd)"
+          ls -l
+          cd client
           npm install
 
       - name: Build the application
