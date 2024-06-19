@@ -27,8 +27,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "Current directory: $(pwd)"
-          ls -l
           cd client
           npm install
 
