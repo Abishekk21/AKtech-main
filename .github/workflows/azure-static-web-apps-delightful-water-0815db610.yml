@@ -54,6 +54,16 @@ jobs:
         run: |
           ls -la client/build
 
+      - name: Check for index.html in build directory
+        if: env.CLIENT_DIR_EXISTS == 'true'
+        run: |
+          if [ -f "client/build/index.html" ]; then
+            echo "index.html found in build directory"
+          else
+            echo "index.html not found in build directory"
+            exit 1
+          fi
+
       - name: Build And Deploy
         if: env.CLIENT_DIR_EXISTS == 'true'
         id: builddeploy
